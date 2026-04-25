@@ -47,13 +47,13 @@
                         <a class="nav-link" href="{{ url('/dosen') }}">Dosen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Jadwal</a>
+                        <a class="nav-link" href="{{ url('/jadwal') }}">Jadwal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/matkul') }}">Mata Kuliah</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">FRS</a>
+                        <a class="nav-link" href="{{ url('/krs') }}">KRS</a>
                     </li>
                     {{-- <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

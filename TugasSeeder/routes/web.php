@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\KRSController;
 use App\Http\Controllers\MatakuliahController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +34,17 @@ Route::post('/matkul/store', [MatakuliahController::class, 'store'])->name('matk
 Route::get('/matkul/{kode_matakuliah}/edit', [MatakuliahController::class, 'edit'])->name('form-edit-matkul');
 Route::put('/matkul/{kode_matakuliah}', [MatakuliahController::class, 'update'])->name('matkulupdate');
 Route::delete('/matkul/{kode_matakuliah}', [MatakuliahController::class, 'destroy'])->name('matkul.delete');
+
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
+Route::get('/jadwal/create', [JadwalController::class, 'create'])->name('form-jadwal');
+Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwalstore');
+Route::get('/jadwal/{id}/edit', [JadwalController::class, 'edit'])->name('form-edit-jadwal');
+Route::put('/jadwal/{id}', [JadwalController::class, 'update'])->name('jadwalupdate');
+Route::delete('/jadwal/{id}', [JadwalController::class, 'destroy'])->name('jadwal.delete');
+
+Route::get('/krs', [KRSController::class, 'index'])->name('krs');
+Route::get('/krs/create', [KRSController::class, 'create'])->name('form-krs');
+Route::post('/krs/store', [KRSController::class, 'store'])->name('krsstore');
+Route::get('/krs/{id}/edit', [KRSController::class, 'edit'])->name('form-edit-krs');
+Route::put('/krs/{id}', [KRSController::class, 'update'])->name('krsupdate');
+Route::delete('/krs/{id}', [KRSController::class, 'destroy'])->name('krs.delete');
