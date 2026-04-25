@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-header">Edit Mahasiswa</div>
             <div class="card-body">
-                <form method="POST" action="{{ route('update', $dataMhs->npm) }}">
+                <form method="POST" action="{{ route('mahasiswaupdate', $dataMhs->npm) }}">
                     @csrf
                     @method('PUT')
 

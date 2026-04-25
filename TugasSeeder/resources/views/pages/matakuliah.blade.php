@@ -2,7 +2,7 @@
 
 @section('contens')
     <div class="container mt-3">
-        <h1>Data Mahasiswa</h1>
+        <h1>Data Matakuliah</h1>
         @if (session('add'))
             <div class="alert alert-success alert-dismissible fade show"">
                 {{ session('add') }}
@@ -23,7 +23,7 @@
         @endif
         <div class="card p-3">
             <div class="d-flex justify-content mb-3">
-                <a href="{{ route('form-mhs') }}" class="btn btn-primary">
+                <a href="{{ route('form-matkul') }}" class="btn btn-primary">
                     Add
                 </a>
             </div>
@@ -32,22 +32,22 @@
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">No</th>
-                        <th scope="col" class="text-center">Npm</th>
-                        <th scope="col">Waldos</th>
-                        <th scope="col">Nama Mahasiswa</th>
+                        <th scope="col" class="text-center">Kode Matakuliah</th>
+                        <th scope="col">Nama Mata Kuliah</th>
+                        <th scope="col">SKS</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($dataMhs as $i)
+                    @foreach ($dataMatkul as $i)
                         <tr>
                             <th scope="row" class="text-center">{{ $loop->iteration }}</th>
-                            <th scope="row" class="text-center">{{ $i->npm }}</th>
-                            <td>{{ $i->nidn }}</td>
-                            <td>{{ $i->nama }}</td>
+                            <th scope="row" class="text-center">{{ $i->kode_matakuliah }}</th>
+                            <td>{{ $i->nama_matakuliah }}</td>
+                            <td>{{ $i->sks }}</td>
                             <td>
                                 {{-- <button type="button" class="btn btn-danger">Hapus</button> --}}
-                                <form action="{{ route('mahasiswa.delete', $i->npm) }}" method="POST"
+                                <form action="{{ route('matkul.delete', $i->kode_matakuliah) }}" method="POST"
                                     style="display:inline;" onsubmit="return confirm('Yakin mau hapus data ini?')">
                                     @csrf
                                     @method('DELETE')
@@ -55,7 +55,7 @@
                                         Hapus
                                     </button>
                                 </form>
-                                <a href="{{ route('form-edit-mhs', $i->npm) }}" class="btn btn-warning">
+                                <a href="{{ route('form-edit-matkul', $i->kode_matakuliah) }}" class="btn btn-warning">
                                     Edit
                                 </a>
                             </td>

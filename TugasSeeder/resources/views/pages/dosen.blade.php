@@ -2,7 +2,7 @@
 
 @section('contens')
     <div class="container mt-3">
-        <h1>Data Mahasiswa</h1>
+        <h1>Data Dosen</h1>
         @if (session('add'))
             <div class="alert alert-success alert-dismissible fade show"">
                 {{ session('add') }}
@@ -23,7 +23,7 @@
         @endif
         <div class="card p-3">
             <div class="d-flex justify-content mb-3">
-                <a href="{{ route('form-mhs') }}" class="btn btn-primary">
+                <a href="{{ route('form-dosen') }}" class="btn btn-primary">
                     Add
                 </a>
             </div>
@@ -32,22 +32,19 @@
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">No</th>
-                        <th scope="col" class="text-center">Npm</th>
-                        <th scope="col">Waldos</th>
-                        <th scope="col">Nama Mahasiswa</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col" class="text-center">Nidn</th>
+                        <th scope="col">Nama</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($dataMhs as $i)
+                    @foreach ($dataDosen as $i)
                         <tr>
                             <th scope="row" class="text-center">{{ $loop->iteration }}</th>
-                            <th scope="row" class="text-center">{{ $i->npm }}</th>
-                            <td>{{ $i->nidn }}</td>
+                            <th scope="row" class="text-center">{{ $i->nidn }}</th>
                             <td>{{ $i->nama }}</td>
                             <td>
                                 {{-- <button type="button" class="btn btn-danger">Hapus</button> --}}
-                                <form action="{{ route('mahasiswa.delete', $i->npm) }}" method="POST"
+                                <form action="{{ route('dosen.delete', $i->nidn) }}" method="POST"
                                     style="display:inline;" onsubmit="return confirm('Yakin mau hapus data ini?')">
                                     @csrf
                                     @method('DELETE')
@@ -55,7 +52,7 @@
                                         Hapus
                                     </button>
                                 </form>
-                                <a href="{{ route('form-edit-mhs', $i->npm) }}" class="btn btn-warning">
+                                <a href="{{ route('form-edit-dosen', $i->nidn) }}" class="btn btn-warning">
                                     Edit
                                 </a>
                             </td>

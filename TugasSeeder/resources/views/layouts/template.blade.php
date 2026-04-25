@@ -44,13 +44,13 @@
                         <a class="nav-link " href="{{ url('/mahasiswa') }}">Mahasiswa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Dosen</a>
+                        <a class="nav-link" href="{{ url('/dosen') }}">Dosen</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">Jadwal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Mata Kuliah</a>
+                        <a class="nav-link" href="{{ url('/matkul') }}">Mata Kuliah</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">FRS</a>
