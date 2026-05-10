@@ -13,7 +13,7 @@ class MatakuliahController extends Controller
     public function index()
     {
         $dataMatkul = Matakuliah::all();
-        return view('pages.matakuliah', compact('dataMatkul'));
+        return view('pages.matakuliah.matakuliah', compact('dataMatkul'));
     }
 
     /**
@@ -21,7 +21,7 @@ class MatakuliahController extends Controller
      */
     public function create()
     {
-        return view('form.form-matkul');
+        return view('pages.matakuliah.form-matkul');
     }
 
     /**
@@ -45,7 +45,9 @@ class MatakuliahController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $detailmatakuliah = Matakuliah::findOrFail($id);
+
+        return view('pages.matakuliah.detail-matakuliah', compact('detailmatakuliah'));
     }
 
     /**
@@ -54,7 +56,7 @@ class MatakuliahController extends Controller
     public function edit(string $kode_matakuliah)
     {
         $dataMatkul = Matakuliah::where('kode_matakuliah', $kode_matakuliah)->firstOrFail();
-        return view('form.form-edit-matkul', compact('dataMatkul'));
+        return view('pages.matakuliah.form-edit-matkul', compact('dataMatkul'));
     }
 
     /**

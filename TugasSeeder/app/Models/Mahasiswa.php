@@ -8,5 +8,9 @@ class Mahasiswa extends Model
 {
     protected $table = 'mahasiswa';
     protected $primaryKey = 'npm';
-    protected $fillable = ['npm','nidn','nama'];
+    protected $fillable = ['npm', 'nidn', 'nama'];
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'nidn', 'nidn');
+    }
 }

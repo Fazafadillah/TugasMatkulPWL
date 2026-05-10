@@ -9,4 +9,6 @@ class Dosen extends Model
     protected $table = 'dosen';
     protected $primaryKey = 'nidn';
     protected $fillable = ['nidn', 'nama'];
+    public $incrementing = false;
+    protected $keyType = 'string';
 }

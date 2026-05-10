@@ -33,8 +33,10 @@
                     <tr>
                         <th scope="col" class="text-center">No</th>
                         <th scope="col" class="text-center">ID KRS</th>
+                        <th scope="col">Nama Mahasiswa</th>
                         <th scope="col">Npm</th>
                         <th scope="col">Kode Mata Kuliah</th>
+                        <th scope="col">Nama Mata Kuliah</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -43,8 +45,10 @@
                         <tr>
                             <th scope="row" class="text-center">{{ $loop->iteration }}</th>
                             <th scope="row" class="text-center">{{ $i->id }}</th>
+                            <td>{{ $i->mahasiswa->nama }}</td>
                             <td>{{ $i->npm }}</td>
                             <td>{{ $i->kode_matakuliah }}</td>
+                            <td>{{ $i->matakuliah->nama_matakuliah }}</td>
                             <td>
                                 {{-- <button type="button" class="btn btn-danger">Hapus</button> --}}
                                 <form action="{{ route('krs.delete', $i->id) }}" method="POST" style="display:inline;"
@@ -58,6 +62,9 @@
                                 <a href="{{ route('form-edit-krs', $i->id) }}" class="btn btn-warning">
                                     Edit
                                 </a>
+                                <a href="{{ route('detail-krs', ['id' => $i->id]) }}" class="btn btn-primary btn-sm"><i
+                                        class="bi bi-eye"></i>
+                                    Detail</a>
                             </td>
                         </tr>
                     @endforeach

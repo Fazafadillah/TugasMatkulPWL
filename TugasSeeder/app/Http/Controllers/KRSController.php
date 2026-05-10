@@ -12,8 +12,9 @@ class KRSController extends Controller
      */
     public function index()
     {
-        $dataKRS = KRS::all();
-        return view('pages.krs', compact('dataKRS'));
+        // $dataKRS = KRS::all();
+        $dataKRS = KRS::with(['mahasiswa', 'matakuliah'])->get();
+        return view('pages.krs.krs', compact('dataKRS'));
     }
 
     /**
@@ -21,7 +22,7 @@ class KRSController extends Controller
      */
     public function create()
     {
-        return view('form.form-krs');
+        return view('pages.krs.form-krs');
     }
 
     /**
@@ -44,7 +45,9 @@ class KRSController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $detailkrs = KRS::findOrFail($id);
+
+        return view('pages.krs.detail-krs', compact('detailkrs'));
     }
 
     /**
@@ -53,7 +56,7 @@ class KRSController extends Controller
     public function edit(string $id)
     {
         $dataKRS = KRS::where('id', $id)->firstOrFail();
-        return view('form.form-edit-krs', compact('dataKRS'));
+        return view('pages.krs.form-edit-krs', compact('dataKRS'));
     }
 
     /**

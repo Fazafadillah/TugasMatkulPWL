@@ -14,8 +14,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $dataMhs = Mahasiswa::all();
-        return view('pages.mahasiswa', compact('dataMhs'));
+        // $dataMhs = Mahasiswa::all();
+        $dataMhs = Mahasiswa::with('dosen')->get();
+        return view('pages.mahasiswa.mahasiswa  ', compact('dataMhs'));
     }
 
     /**
@@ -23,7 +24,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('form.form-mhs');
+        return view('pages.mahasiswa.form-mhs');
     }
 
     /**
@@ -47,7 +48,9 @@ class MahasiswaController extends Controller
      */
     public function show(string $id)
     {
-        
+        $detailmahasiswa = Mahasiswa::findOrFail($id);
+
+        return view('pages.mahasiswa.detail-mahasiswa', compact('detailmahasiswa'));
     }
 
     /**
@@ -56,7 +59,7 @@ class MahasiswaController extends Controller
     public function edit(string $npm)
     {
         $dataMhs = Mahasiswa::where('npm', $npm)->firstOrFail();
-        return view('form.form-edit-mhs', compact('dataMhs'));
+        return view('pages.mahasiswa.form-edit-mhs', compact('dataMhs'));
     }
 
     /**
@@ -64,7 +67,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, string $npm)
     {
-         $validated = $request->validate([
+        $validated = $request->validate([
             'npm' => 'required|numeric',
             'nidn' => 'required|numeric',
             'nama' => 'required',
@@ -82,6 +85,5 @@ class MahasiswaController extends Controller
         Mahasiswa::where('npm', $npm)->delete();
 
         return redirect()->route('mahasiswa')->with('delete', 'Data berhasil dihapus');
-        
     }
 }

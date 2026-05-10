@@ -2,7 +2,7 @@
 
 @section('contens')
     <div class="container mt-3">
-        <h1>Data Jadwal</h1>
+        <h1>Data Mahasiswa</h1>
         @if (session('add'))
             <div class="alert alert-success alert-dismissible fade show"">
                 {{ session('add') }}
@@ -23,7 +23,7 @@
         @endif
         <div class="card p-3">
             <div class="d-flex justify-content mb-3">
-                <a href="{{ route('form-jadwal') }}" class="btn btn-primary">
+                <a href="{{ route('form-mhs') }}" class="btn btn-primary">
                     Add
                 </a>
             </div>
@@ -32,35 +32,35 @@
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">No</th>
-                        <th scope="col" class="text-center">Kode Matakuliah</th>
-                        <th scope="col">Nidn</th>
-                        <th scope="col">Kelas</th>
-                        <th scope="col">Hari</th>
-                        <th scope="col">Jam</th>
+                        <th scope="col" class="text-center">Npm</th>
+                        <th scope="col">Waldos</th>
+                        <th scope="col">Nama Mahasiswa</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($dataJadwal as $i)
+                    @foreach ($dataMhs as $i)
                         <tr>
                             <th scope="row" class="text-center">{{ $loop->iteration }}</th>
-                            <td>{{ $i->kode_matakuliah }}</td>
-                            <td>{{ $i->nidn }}</td>
-                            <td>{{ $i->kelas }}</td>
-                            <td>{{ $i->hari }}</td>
-                            <td>{{ $i->jam }}</td>
+                            <th scope="row" class="text-center">{{ $i->npm }}</th>
+                            <td>{{ $i->dosen->nama }}</td>
+                            <td>{{ $i->nama }}</td>
                             <td>
                                 {{-- <button type="button" class="btn btn-danger">Hapus</button> --}}
-                                <form action="{{ route('jadwal.delete', $i->id) }}" method="POST" style="display:inline;"
-                                    onsubmit="return confirm('Yakin mau hapus data ini?')">
+                                <form action="{{ route('mahasiswa.delete', $i->npm) }}" method="POST"
+                                    style="display:inline;" onsubmit="return confirm('Yakin mau hapus data ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">
                                         Hapus
                                     </button>
                                 </form>
-                                <a href="{{ route('form-edit-jadwal', $i->id) }}" class="btn btn-warning">
+                                <a href="{{ route('form-edit-mhs', $i->npm) }}" class="btn btn-warning">
                                     Edit
                                 </a>
+                                <a href="{{ route('detail-mahasiswa', ['npm' => $i->npm]) }}"
+                                    class="btn btn-primary btn-sm"><i class="bi bi-eye"></i>
+                                    Detail</a>
                             </td>
                         </tr>
                     @endforeach

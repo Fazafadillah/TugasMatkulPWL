@@ -58,6 +58,9 @@
                                 <a href="{{ route('form-edit-matkul', $i->kode_matakuliah) }}" class="btn btn-warning">
                                     Edit
                                 </a>
+                                <a href="{{ route('detail-matakuliah', ['kode_matakuliah' => $i->kode_matakuliah]) }}"
+                                    class="btn btn-primary btn-sm"><i class="bi bi-eye"></i>
+                                    Detail</a>
                             </td>
                         </tr>
                     @endforeach

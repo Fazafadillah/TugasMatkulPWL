@@ -13,7 +13,7 @@ class DosenController extends Controller
     public function index()
     {
         $dataDosen = Dosen::all();
-        return view('pages.dosen', compact('dataDosen'));
+        return view('pages.dosen.dosen', compact('dataDosen'));
     }
 
     /**
@@ -21,7 +21,7 @@ class DosenController extends Controller
      */
     public function create()
     {
-        return view('form.form-dosen');
+        return view('pages.dosen.form-dosen');
     }
 
     /**
@@ -44,7 +44,9 @@ class DosenController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $detaildosen = Dosen::findOrFail($id);
+
+        return view('pages.dosen.detail-dosen', compact('detaildosen'));
     }
 
     /**
@@ -53,7 +55,7 @@ class DosenController extends Controller
     public function edit(string $nidn)
     {
         $dataDosen = Dosen::where('nidn', $nidn)->firstOrFail();
-        return view('form.form-edit-dosen', compact('dataDosen'));
+        return view('pages.dosen.form-edit-dosen', compact('dataDosen'));
     }
 
     /**

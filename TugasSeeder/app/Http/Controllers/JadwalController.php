@@ -12,8 +12,9 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $dataJadwal = Jadwal::all();
-        return view('pages.jadwal', compact('dataJadwal'));
+        // $dataJadwal = Jadwal::all();
+        $dataJadwal = Jadwal::with(['dosen','matakuliah'])->get();
+        return view('pages.jadwal.jadwal', compact('dataJadwal'));
     }
 
     /**
@@ -21,7 +22,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('form.form-jadwal');
+        return view('pages.jadwal.form-jadwal');
     }
 
     /**
@@ -48,7 +49,9 @@ class JadwalController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $detailjadwal = Jadwal::findOrFail($id);
+
+        return view('pages.jadwal.detail-jadwal', compact('detailjadwal'));
     }
 
     /**
@@ -57,7 +60,7 @@ class JadwalController extends Controller
     public function edit(string $id)
     {
         $dataJadwal = Jadwal::where('id', $id)->firstOrFail();
-        return view('form.form-edit-jadwal', compact('dataJadwal'));
+        return view('pages.jadwal.form-edit-jadwal', compact('dataJadwal'));
     }
 
     /**
